@@ -37,7 +37,7 @@ function hover() {
 function getRandomInt(min, max) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
 let newGridButton = document.querySelector("#newGridButton")
@@ -46,7 +46,7 @@ newGridButton.addEventListener("click", () => {
     while (isNaN(input)) {
         input = prompt("Invalid input. Please enter a number from 1-100.")
     } 
-    while (input >= 100){
+    while (input > 100 || input < 1) {
         input = prompt("Number too high. Please enter a number from 1-100.")
     }
     clearGrid();
