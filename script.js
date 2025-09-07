@@ -1,21 +1,16 @@
 // Functions
-
 function createGrid(size) {
     const grid = document.getElementById("grid");
     for (let i = 0; i < size; i++) {
         newDiv = document.createElement("div");
         newDiv.classList.add("gridColumn");
         grid.appendChild(newDiv);
-        console.log("row made");
         for (let i=0; i<size; i++) {
             newSquare = document.createElement("div");
             newSquare.classList.add("gridSquare")
             newDiv.appendChild(newSquare);
-            console.log("square made")
         }
     }
-    if (currentSelection == "black") blackHover();
-    if (currentSelection == "rainbow") colorHover();
 }
 
 function clearGrid() {
@@ -25,11 +20,16 @@ function clearGrid() {
     }
 }
 
-function blackHover() {
+function hover() {
     let squares = document.querySelectorAll(".gridSquare");
     for (let i=0; i<squares.length; i++) {
         squares[i].addEventListener("mouseover", (event) => {
-            squares[i].style.cssText = "background-color: black";
+            if (currentSelection == "black") {
+                squares[i].style.cssText = "background-color: black";
+            } else if (currentSelection == "rainbow") {
+                squares[i].style.cssText = `background-color: rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
+                }
+            
         })
     }                    
 }
@@ -39,17 +39,6 @@ function getRandomInt(min, max) {
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
-
-function colorHover() {
-    let squares = document.querySelectorAll(".gridSquare");
-    for (let i=0; i<squares.length; i++) {
-        squares[i].addEventListener("mouseover", (event) => {
-            squares[i].style.cssText = `background-color: rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
-        })
-    }  
-}
-
-// Event Listeners
 
 let newGridButton = document.querySelector("#newGridButton")
 newGridButton.addEventListener("click", () => {
@@ -69,16 +58,16 @@ let currentSelection = "black";
 
 let rainbowButton = document.querySelector("#rainbowButton");
 rainbowButton.addEventListener("click", () => {
-    colorHover();
+    hover();
     currentSelection = "rainbow";
 })
 
 let blackButton = document.querySelector("#blackButton");
 blackButton.addEventListener("click", () => {
-    blackHover();
+    hover();
     currentSelection = "black"
 })
 
 // Create inital grid
 createGrid(16);
-blackHover();
+hover();
