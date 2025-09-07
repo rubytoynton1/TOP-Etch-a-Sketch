@@ -2,15 +2,16 @@
 function createGrid(size) {
     const grid = document.getElementById("grid");
     for (let i = 0; i < size; i++) {
-        newDiv = document.createElement("div");
+        let newDiv = document.createElement("div");
         newDiv.classList.add("gridColumn");
         grid.appendChild(newDiv);
         for (let i=0; i<size; i++) {
-            newSquare = document.createElement("div");
+            let newSquare = document.createElement("div");
             newSquare.classList.add("gridSquare")
             newDiv.appendChild(newSquare);
         }
     }
+    hover();
 }
 
 function clearGrid() {
@@ -29,7 +30,6 @@ function hover() {
             } else if (currentSelection == "rainbow") {
                 squares[i].style.cssText = `background-color: rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
                 }
-            
         })
     }                    
 }
@@ -51,23 +51,19 @@ newGridButton.addEventListener("click", () => {
     }
     clearGrid();
     createGrid(input);
-    resetHover();
 })
 
 let currentSelection = "black";
 
 let rainbowButton = document.querySelector("#rainbowButton");
 rainbowButton.addEventListener("click", () => {
-    hover();
     currentSelection = "rainbow";
 })
 
 let blackButton = document.querySelector("#blackButton");
 blackButton.addEventListener("click", () => {
-    hover();
     currentSelection = "black"
 })
 
 // Create inital grid
 createGrid(16);
-hover();
