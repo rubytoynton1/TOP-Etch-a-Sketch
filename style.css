@@ -1,8 +1,23 @@
+body {
+
+}
+
+.pageHeader {
+    text-align: center;
+}
+
+.mainBody {
+    display:flex;
+    justify-content: center;
+    padding: 50px;
+}
+
 #grid {
     display: flex;
     border: solid;
     width: 400px;
     height:400px;
+
 }
 
 .gridColumn {
