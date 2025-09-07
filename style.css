@@ -1,0 +1,20 @@
+#grid {
+    display: flex;
+    border: solid;
+    width: 400px;
+    height:400px;
+}
+
+.gridColumn {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.gridSquare {
+    border-style: solid;
+    border-color: black;
+    display: flex;
+    flex: 1;
+}
+
