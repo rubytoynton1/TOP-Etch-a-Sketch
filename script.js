@@ -23,10 +23,11 @@ function clearGrid() {
 
 function hover() {
     let squares = document.querySelectorAll(".gridSquare");
+    squares.forEach(square => square.opacity = 0);
     for (let i=0; i<squares.length; i++) {
         squares[i].addEventListener("mouseover", (event) => {
             if (currentSelection == "black") {
-                squares[i].style.cssText = "background-color: black";
+                squares[i].style.cssText = "background-color: black";    
             } else if (currentSelection == "rainbow") {
                 squares[i].style.cssText = `background-color: rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`;
                 }
